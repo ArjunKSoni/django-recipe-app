@@ -1,0 +1,27 @@
+to create a django project
+-->> django-admin startproject {project name}
+
+to start it-->> python manage.py runserver {can pass port and localhost eg. 0.0.0.0:port}
+
+
+files
+1) asgi.py === asynchronous gateway interface
+2) wsgi    === web server gateway interface 
+
+
+to create an app in django 
+-->> python manage.py startapp {appname}
+{it creates a folder for the app inside the package}
+
+IMP: whenever you create an app.. add that in settings.py in main module.
+
+
+
+to create or update model files
+we need to hit migration
+-->> python manage.py makemigrations
+-->> python manage.py migrate  #to save changes to the sqlit database 
+
+
+to use shell
+-->> python manage.py shell

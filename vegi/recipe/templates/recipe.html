@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+    <form style="padding:100px" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input name="recipe_name" type="text" placeholder="recipe name"/>
+        <input name="recipe_desc" type="text" placeholder="recipe desc"/>
+        <input name="recipe_image" type="file" placeholder="recipe image"/>
+        <button type="submit">submit</button>
+    </form>
+    <table>
+<thead>
+    <tr>
+        <th scope="col">no.</th>
+        <th scope="col">Receipe name</th>
+        <th scope="col">Receipe Desc</th>
+        <th scope="col">Image</th>
+        <th scope="col">Actions</th>
+    </tr>
+</thead>
+    {% for i in recipe %}
+    <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{i.recipe_name}}</td>
+        <td>{{i.recipe_desc}}</td>
+        <td>
+        <img src="/media/{{i.recipe_image}}" style="height: 100px"> </td>
+        <td>
+        <td>
+        <a href="/delete_recipe/{{i.id}}" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% if request.user.is_authenticated %}
+<a href="/logout/" class="btn btn-danger">Logout</a>
+{% else %}
+<a href="/login/" class="btn btn-danger">Login</a>
+{% endif %}
+
+
+{% endblock %}

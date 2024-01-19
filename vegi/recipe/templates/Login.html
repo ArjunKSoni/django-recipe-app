@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block start %}
+    <h1>Login </h1>
+    <form style="padding:100px" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input name="user" type="text" placeholder="user name"/>
+        <input name="password" type="password" placeholder="password"/>
+        <button class="btn px-4 py-2 btn-success" type="submit">submit</button>
+    </form>
+    <p> Don't have an account? <a href="/register">register</a></p>
+{% endblock %}
